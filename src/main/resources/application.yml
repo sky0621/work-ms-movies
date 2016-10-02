@@ -15,8 +15,10 @@ spring:
     initialize: false
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/msmovie
-    username: testuser
-    password: testpass
+    username: dummy
+    password: dummy
   jpa:
     hibernate:
       ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
