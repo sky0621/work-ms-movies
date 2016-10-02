@@ -8,3 +8,15 @@ security:
   enable-csrf: true
   basic:
     enabled: false
+
+## データベース関連
+spring:
+  datasource:
+    initialize: false
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/msmovie
+    username: testuser
+    password: testpass
+  jpa:
+    hibernate:
+      ddl-auto: none
