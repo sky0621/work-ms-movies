@@ -2,6 +2,8 @@ package com.github.sky0621.work.ms.movies.domain.converter;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import com.github.sky0621.work.ms.movies.domain.entity.Movie;
 import com.github.sky0621.work.ms.movies.domain.resource.MovieResource;
@@ -26,6 +28,10 @@ public final class MovieConverter {
 		resource.setTm(movie.getTm().toLocalTime());
 		resource.setPath(movie.getPath());
 		return resource;
+	}
+
+	public static List<MovieResource> toMovieResourceList(List<Movie> movieList) {
+		return movieList.stream().map(movie -> toMovieResource(movie)).collect(Collectors.toList());
 	}
 
 }

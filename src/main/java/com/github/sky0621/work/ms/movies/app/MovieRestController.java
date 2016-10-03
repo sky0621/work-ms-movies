@@ -1,6 +1,8 @@
 package com.github.sky0621.work.ms.movies.app;
 
 import static com.github.sky0621.work.ms.movies.domain.converter.MovieConverter.toMovie;
+import static com.github.sky0621.work.ms.movies.domain.converter.MovieConverter.toMovieResource;
+import static com.github.sky0621.work.ms.movies.domain.converter.MovieConverter.toMovieResourceList;
 import static org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder.on;
 
 import java.net.URI;
@@ -22,7 +24,7 @@ import com.github.sky0621.work.ms.movies.domain.resource.MovieResource;
 import com.github.sky0621.work.ms.movies.domain.service.MovieService;
 
 // I know Resource
-// I don't know entity
+// I know Service
 @RestController
 @RequestMapping("movies")
 public class MovieRestController {
@@ -37,7 +39,7 @@ public class MovieRestController {
 	// TODO デフォルトソート順を適用
 	@RequestMapping(method = RequestMethod.GET)
 	public List<MovieResource> getMovies() {
-		return movieService.findAll();
+		return toMovieResourceList(movieService.findAll());
 	}
 
 	/*
@@ -45,7 +47,7 @@ public class MovieRestController {
 	 */
 	@RequestMapping(path = "{id}", method = RequestMethod.GET)
 	public MovieResource getMovie(@PathVariable String id) {
-		MovieResource resource = movieService.find(id);
+		MovieResource resource = toMovieResource(movieService.find(id));
 		if (resource == null) {
 			throw new MovieResourceNotFoundException(id);
 		}
@@ -59,7 +61,7 @@ public class MovieRestController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<MovieResource> createMovie(@Validated @RequestBody MovieResource resource,
 			UriComponentsBuilder uriBuilder) {
-		MovieResource createdMovie = movieService.create(toMovie(resource));
+		MovieResource createdMovie = toMovieResource(movieService.create(toMovie(resource)));
 
 		URI resourceUri = MvcUriComponentsBuilder.relativeTo(uriBuilder)
 				.withMethodCall(on(MovieRestController.class).getMovie(createdMovie.getId())).build().encode().toUri();
