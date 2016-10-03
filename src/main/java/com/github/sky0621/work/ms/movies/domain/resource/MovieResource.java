@@ -1,7 +1,7 @@
 package com.github.sky0621.work.ms.movies.domain.resource;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -14,7 +14,7 @@ public class MovieResource implements Serializable {
 	private String name;
 
 	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss")
-	private LocalDate datetime;
+	private Date datetime;
 
 	private String path;
 
@@ -34,11 +34,11 @@ public class MovieResource implements Serializable {
 		this.name = name;
 	}
 
-	public LocalDate getDatetime() {
+	public Date getDatetime() {
 		return datetime;
 	}
 
-	public void setDatetime(LocalDate datetime) {
+	public void setDatetime(Date datetime) {
 		this.datetime = datetime;
 	}
 
