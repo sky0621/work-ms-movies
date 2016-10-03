@@ -14,8 +14,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Bean
 	ObjectMapper objectMapper() {
-		// JSON‚ğƒCƒ“ƒfƒ“ƒg‚µ‚Äo—ÍI
-		// “ú•tƒpƒ‰ƒ[ƒ^‚Í•W€“ú•tŒ`®‚ÅƒtƒH[ƒ}ƒbƒgI
+		// JSONã‚’ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã—ã¦å‡ºåŠ›ï¼
+		// æ—¥ä»˜ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¯æ¨™æº–æ—¥ä»˜å½¢å¼ã§ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆï¼
 		return Jackson2ObjectMapperBuilder.json().indentOutput(true).dateFormat(new StdDateFormat()).build();
 	}
 

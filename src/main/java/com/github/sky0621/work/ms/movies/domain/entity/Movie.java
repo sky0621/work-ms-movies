@@ -1,12 +1,11 @@
 package com.github.sky0621.work.ms.movies.domain.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Time;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -17,29 +16,20 @@ public class Movie implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "sid")
-	private int sid;
-
 	@Column(name = "id")
 	private String id;
 
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "datetime")
-	private Date datetime;
+	@Column(name = "dt")
+	private Date dt;
+
+	@Column(name = "tm")
+	private Time tm;
 
 	@Column(name = "path")
 	private String path;
-
-	public int getSid() {
-		return sid;
-	}
-
-	public void setSid(int sid) {
-		this.sid = sid;
-	}
 
 	public String getId() {
 		return id;
@@ -57,12 +47,20 @@ public class Movie implements Serializable {
 		this.name = name;
 	}
 
-	public Date getDatetime() {
-		return datetime;
+	public Date getDt() {
+		return dt;
 	}
 
-	public void setDatetime(Date datetime) {
-		this.datetime = datetime;
+	public void setDt(Date dt) {
+		this.dt = dt;
+	}
+
+	public Time getTm() {
+		return tm;
+	}
+
+	public void setTm(Time tm) {
+		this.tm = tm;
 	}
 
 	public String getPath() {
